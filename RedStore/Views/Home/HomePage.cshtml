@@ -1,0 +1,144 @@
+﻿@model VmHomePage
+<!--Header-->
+<div class="header">
+<div class="container" >
+
+	<div class="row">
+			<div class="col-2">						
+					<h1>@Model.LstHeader[0].Title</h1>			
+					<p>
+						@Model.LstHeader[0].Paragraph
+					</p>
+					<a href="" class="btn">Explore Now &#8594;</a>				
+			</div>					
+			<div class="col-2">
+				 <img src="~/Uploads/Header/@Model.LstHeader[0].ImageName">
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+<!-- Feadtued Categories -->
+<div class="categories">
+	<div class="small-container">
+		<div class="row">
+			@foreach(var cat in Model.LstoOffers)
+			{			
+			<div class="col-3">
+				<img src="~/Uploads/Offer/@cat.ImageName">
+			</div>
+			}
+			
+		</div>
+	</div>
+</div>
+
+<!-- Featured Products -->
+<div class="small-container">
+	<h2 class="title">Featured Products</h2>
+	<div class="row">
+
+	@foreach(var cat in Model.LstFeatured)
+	{		
+		<div class="col-4">		
+					<img src="~/Uploads/Featured/@cat.ImageName">		
+			
+			<h3>@cat.ProductName</h3>
+			<p>@cat.Prand</p>
+			<p>$@cat.SalesPrice</p>
+			<div class="rating">
+			<p>@cat.Rating</P>
+			<a asp-controller="ItemDetails" asp-action="ItemDetails" asp-route-ItemId="@cat.FeaturedId" class="btn">Buy</a>
+			</div>
+		</div>
+	}
+	</div>	
+
+	<h2 class="title">Latest Products</h2>
+	<div class="row">
+		@foreach(var cat in Model.LstMainProduct)
+		{		
+		<div class="col-4">
+			<img src="~/Uploads/MainProducts/@cat.ImageName">		
+			<h3>@cat.ProductName</h3>			
+			<p>@cat.Prand</p>
+			<p>$@cat.SalesPrice</p>			
+			<p>@cat.Rating</P>	
+			<a asp-controller="ItemDetails" asp-action="ProductsDetails" asp-route-ProductsId="@cat.MainId" class="btn">Buy</a>
+			</div>			
+		}
+	</div>
+</div>
+			
+
+<!-- exploers -->
+<div class="offer">
+	<div class="small-container">
+		<div class="row">		
+			<div class="col-2">
+					 <img src="~/Uploads/Header/@Model.LstHeader[1].ImageName">
+			</div>
+			<div class="col-2">
+				<h1>@Model.LstHeader[1].Title</h1>			
+				<p>Exclusively Available on RedStore</p>
+				<small>
+					@Model.LstHeader[1].Paragraph
+				</small>
+				<a href="" class="btn">Buy Now &#8594;</a>
+			</div>		
+
+			
+		</div>
+	</div>
+</div>
+
+<!-- Testimonial -->
+<div class="testimonial">
+	<div class="small-container">
+		<div class="row">
+			
+
+				@foreach (var cat in Model.Lsttestimonial)
+				{
+					
+			<div class="col-3">
+				<i class="fa fa-quote-left"></i>
+				<p>
+					@cat.Comment
+				</p>
+				<div class="rating">
+					@cat.Rating
+				</div>
+				<img src="~/Uploads/testimonial/@cat.ImageName">		
+				<h3>@cat.CustmerName</h3>
+			</div>
+				}
+			
+		</div>
+	</div>
+</div>
+
+
+<!-- Brands -->
+<div class="brands">
+	<div class="small-container">
+		<div class="row">
+			<div class="col-5">
+				<img src="~/Home/images/logo-godrej.png">
+			</div>
+			<div class="col-5">
+				<img src="~/Home/images/logo-oppo.png">
+			</div>
+			<div class="col-5">
+				<img src="~/Home/images/logo-coca-cola.png">
+			</div>
+			<div class="col-5">
+				<img src="~/Home/images/logo-paypal.png">
+			</div>
+			<div class="col-5">
+				<img src="~/Home/images/logo-philips.png">
+			</div>
+		</div>
+	</div>
+</div>

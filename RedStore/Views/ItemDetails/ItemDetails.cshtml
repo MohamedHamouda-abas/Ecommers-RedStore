@@ -1,0 +1,112 @@
+﻿@model VwDetailes
+<!-- Single Products -->
+<div class="small-container single-product">
+    <div class="row">
+       <div class="col-2">      
+                <img src="~/Uploads/Featured/@Model.Featured.ImageName" width="100%" id="ProductImg">
+            <div class="small-img-row">
+                <div class="small-img-col">
+                    <img src="~/Uploads/Featured/@Model.Featured.ImageName" width="100%" id="ProductImg">
+                </div>
+                <div class="small-img-col">
+                    <img src="~/Uploads/Featured/@Model.Featured.ImageName" width="100%" id="ProductImg">
+                </div>
+                <div class="small-img-col">
+                    <img src="~/Uploads/Featured/@Model.Featured.ImageName" width="100%" id="ProductImg">
+                </div>
+                <div class="small-img-col">
+                    <img src="~/Uploads/Featured/@Model.Featured.ImageName" width="100%" id="ProductImg">
+                </div>
+            </div>
+        </div>
+        <div class="col-2">       
+            <h3>@Model.Featured.Prand</h3>
+            <h1>@Model.Featured.ProductName</h1>
+            <h4>$@Model.Featured.SalesPrice</h4>
+            <h4>@Model.Featured.Rating</h4>
+            <select>
+                <option>Select Size</option>
+                <option>XXL</option>
+                <option>XL</option>
+                <option>L</option>
+                <option>M</option>
+                <option>S</option>
+            </select>
+            <input type="number" value="1">
+
+            <a asp-controller="Order" asp-action="AddToCart"
+               asp-route-FeaturedId="@Model.Featured.FeaturedId" class="btn">
+                add to
+                cart
+            </a>   
+
+            <h3>Product Details <i class="fa fa-indent"></i></h3>
+            <br>
+            <p>
+                @Model.Featured.Pragraph
+            </p>           
+        </div>
+    </div>
+
+</div>
+<!-- title -->
+<div class="small-container">
+    <div class="row row-2">
+        <h2>Related Products</h2>     
+    </div>
+</div>
+
+
+<!-- Products -->
+<div class="small-container">
+    <div class="row">
+        @foreach(var cat in Model.lstFeatured)
+        {         
+        <div class="col-4">
+            <img src="~/Uploads/Featured/@cat.ImageName" width="100%" id="ProductImg">
+            <h3>@cat.ProductName</h3>          
+            <h4>$@cat.SalesPrice</h4>
+            <h5>@cat.Rating</h5>
+            
+        </div>
+      
+        }
+    </div>
+</div>
+
+@section secript
+{
+    <!-- javascript -->
+    <script>
+        var MenuItems = document.getElementById("MenuItems");
+        MenuItems.style.maxHeight = "0px";
+        function menutoggle() {
+            if (MenuItems.style.maxHeight == "0px") {
+                MenuItems.style.maxHeight = "200px"
+            }
+            else {
+                MenuItems.style.maxHeight = "0px"
+            }
+        }
+    </script>
+    <!-- product gallery -->
+    <script>
+        var ProductImg = document.getElementById("ProductImg");
+        var SmallImg = document.getElementsByClassName("small-img");
+
+        SmallImg[0].onclick = function () {
+            ProductImg.src = SmallImg[0].src;
+        }
+        SmallImg[1].onclick = function () {
+            ProductImg.src = SmallImg[1].src;
+        }
+        SmallImg[2].onclick = function () {
+            ProductImg.src = SmallImg[2].src;
+        }
+        SmallImg[3].onclick = function () {
+            ProductImg.src = SmallImg[3].src;
+        }
+
+    </script>
+}
+

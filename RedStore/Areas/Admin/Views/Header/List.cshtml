@@ -1,0 +1,55 @@
+﻿@model List<TbHeader>
+<div class="card-body" style="background:Black">
+	<p class="card-description">		
+		<a href="~/Admin/Header/Edit" class="btn btn-gradient-primary btn-rounded btn-fw">New </a>
+	</p>
+	<table id="order-listing" class="table table-striped">
+		<thead>
+			<tr>
+				<th> ImageName </th>
+				<th> Title </th>
+				<th> Paragraph </th>
+				<th> Actions </th>			
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var cat in Model)
+			{
+				<tr>
+					<td class="py-1">
+						<img src="~/Uploads/Header/@cat.ImageName" alt="image">
+					</td>
+
+					<td> Title </td>
+					<td> Paragraph </td>
+
+					<td class="col-md-4" style="margin:0px;padding:0px;">
+						<a asp-controller="Header" asp-action="Edit" asp-route-HeaderId="@cat.HeaderId" style="height:max-content" class="btn btn-info btn-fw">Edit</a>
+						<a asp-controller="Header" asp-action="Delete" asp-route-HeaderId="@cat.HeaderId" class="btn btn-danger btn-fw" onclick="return confirm(" Are you sure");">Delete</a>
+					</td>
+
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
+@section secript
+	{
+	<!-- plugins:js -->
+	<script src="~/Admin/assets/vendors/js/vendor.bundle.base.js"></script>
+	<!-- endinject -->
+	<!-- Plugin js for this page -->
+	<script src="~/Admin/assets/vendors/datatables.net/jquery.dataTables.js"></script>
+	<script src="~/Admin/assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+	<!-- End plugin js for this page -->
+	<!-- Custom js for this page -->
+	<script src="~/Admin/assets/js/data-table.js"></script>
+	<!-- End custom js for this page -->
+
+	<script>
+		function Search(dropDown) {
+			var id = $(dropDown).val();
+			window.location.href = "/Admin/Header/Search?id=" + id;
+		}
+	</script>
+}

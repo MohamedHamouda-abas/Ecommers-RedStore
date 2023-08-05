@@ -1,0 +1,51 @@
+﻿@model TbFeatured
+<div class="card-body" style="background:black">
+    <h4 class="card-title">Edit form</h4>
+    <form class="forms-sample" method="post" enctype="multipart/form-data" asp-controller="Featured" asp-action="Save" role="form">
+        <input asp-for="FeaturedId" type="hidden" />
+        <input asp-for="Tax" type="hidden" />
+
+        <div class="form-group">
+            <label for="exampleInputUsername1">
+                Image
+            </label>
+            <input asp-for="ImageName" type="file" name="Files" multiple
+                   class="form-control" placeholder="  Image"
+                   onchange="Upload.UploadDefaultImg(event)" accept=".jpg, .jpeg, .png, ,.gif">
+        </div>
+
+
+        <div class="form-group">
+            <label for="exampleInputUsername1"> ProductName</label>
+            <input asp-for="ProductName" type="text" class="form-control" placeholder=" ProductName">
+            <span asp-validation-for="ProductName"></span>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="exampleInputUsername1"> Prand</label>
+            <input asp-for="Prand" type="text" class="form-control" placeholder=" Prand">
+            <span asp-validation-for="Prand"></span>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="exampleInputUsername1"> SalesPrice</label>
+            <input asp-for="SalesPrice" type="text" class="form-control" placeholder=" SalesPrice">
+            <span asp-validation-for="SalesPrice"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputUsername1"> Rating</label>
+            <input asp-for="Rating" type="text" class="form-control" placeholder=" Rating">
+            <span asp-validation-for="Rating"></span>
+        </div>
+
+
+        <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+        <button class="btn btn-dark">Cancel</button>
+
+    </form>
+</div>

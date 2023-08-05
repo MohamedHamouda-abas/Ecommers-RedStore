@@ -1,0 +1,57 @@
+﻿@model UserModel
+<!-- Account Page -->
+<div class="account-page" style="background:white">
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <img src="~/Home/images/ww copy 2.png" width="100%">
+            </div>
+            <div class="col-2">
+                <div class="form-container">
+                    <div class="form-btn">                       
+                        <span onclick="register()">Register</span>                    
+                    </div>      
+                    <form id="RegForm" method="post" asp-controller="User" asp-action="Register">
+
+       
+               
+                            <input type="text" asp-for="UserName" class="form-control" id="email" placeholder="UserName" required="">
+                            <span asp-validation-for="UserName"></span>
+         
+
+
+              
+              
+                            <input type="text" asp-for="Email" class="form-control" id="email" placeholder="Email" required="">
+                            <span asp-validation-for="Email"></span>
+             
+       
+              
+                            <input type="password" asp-for="Password" class="form-control" id="review"
+                                   placeholder="Enter your password" required="">
+                            <span asp-validation-for="Password"></span>
+                  
+       
+                        <button type="submit" class="btn">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section secript{
+<!-- javascript -->
+<script>
+    var MenuItems = document.getElementById("MenuItems");
+    MenuItems.style.maxHeight = "0px";
+    function menutoggle() {
+        if (MenuItems.style.maxHeight == "0px") {
+            MenuItems.style.maxHeight = "200px"
+        }
+        else {
+            MenuItems.style.maxHeight = "0px"
+        }
+    }
+</script>
+}
+

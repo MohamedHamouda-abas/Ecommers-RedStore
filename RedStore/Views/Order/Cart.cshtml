@@ -1,0 +1,92 @@
+﻿@model ShoppingCart
+<!--section start-->
+<section class="cart-section section-b-space">
+	<div class="small-container cart-page">
+		<table>
+			<thead>
+				<tr>
+					<th>Product</th>
+					<th>Price</th>
+					<th>Quantity</th>
+					<th>Subtotal</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model.listItems)
+				{
+					<tr>
+						<td>
+							<div class="cart-info">
+								<img src="~/Uploads/MainProducts/@item.ImageName">
+								<div>
+									<h3>@item.ItemName</h3>
+									<h5>$@item.Price</h5>
+									<a href="">Remove</a>
+								</div>
+							</div>
+						</td>
+						<td><h5>$@item.Price</h5></td>
+						<td>
+							<div class="qty-box">
+								<div class="input-group">
+									<input type="number" name="quantity"
+										   class="form-control input-number qty"
+										   data-id="@item.FeaturedId" data-price="@item.Price"
+										   value="@item.Qty" onkeyup="ChangeQty(this)">
+								</div>
+							</div>
+						</td>
+						<td>
+							<h3 data-id="@item.FeaturedId||@item.MainId" class="td-color totalPrice">$@item.Subtotal</h3>
+						</td>
+					</tr>
+				}
+			</tbody>
+
+		</table>
+		<div class="total-price">
+			<table>
+				<tr>
+					<td>Subtotal</td>
+					<td>$@Model.AllSubTotal</td>
+				</tr>
+				<tr>
+					<td>Tax</td>
+					<td>$@Model.AllTax</td>
+				</tr>
+				<tr>
+					<td>Total</td>
+					<td>$@Model.Total</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="row cart-buttons">
+		<div class="col-6"><a href="~/" class="btn btn-solid">continue shopping</a></div>
+		<div class="col-6"><a href="/Order/SaveOrder" class="btn btn-solid">check out</a></div>
+	</div>
+</section>
+<!--section end-->
+@section secript
+	{
+	<script>
+		function ChangeQty(input) {
+			let id = $(input).data("id");
+			let price = $(input).data("price");
+			let qty = $(input).val();
+			let OverAllTotal = 0;
+			$(".totalPrice").each(function (i) {
+
+				if ($(this).data("id") === id) {
+					$(this).html(price * qty);
+				}
+				alert($(this).html());
+				OverAllTotal = OverAllTotal + parseFloat($(this).text());
+				console.log(OverAllTotal);
+			});
+			console.log(OverAllTotal);
+			$("#OverAllTotal").html(OverAllTotal);
+			// ajax resuest
+		}
+	</script>
+}

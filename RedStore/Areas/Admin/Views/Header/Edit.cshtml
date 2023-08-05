@@ -1,0 +1,36 @@
+﻿@model TbHeader
+<div class="card-body" style="background:black">
+    <h4 class="card-title">Edit form</h4>
+    <form class="forms-sample" method="post" enctype="multipart/form-data" asp-controller="Header" asp-action="Save" role="form">
+
+        <input asp-for="HeaderId" type="hidden" />
+          
+        <div class="form-group">
+            <label for="exampleInputUsername1">
+                Image
+            </label>
+            <input asp-for="ImageName" type="file" name="Files" multiple
+                   class="form-control" placeholder="  Image"
+                   onchange="Upload.UploadDefaultImg(event)" accept=".jpg, .jpeg, .png, ,.gif">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputUsername1"> Title</label>
+            <input asp-for="Title" type="text" class="form-control" placeholder=" Title">
+            <span asp-validation-for="Title"></span>
+        </div>
+
+
+        <div class="form-group">
+            <label for="exampleInputUsername1"> Paragraph</label>
+            <input asp-for="Paragraph" type="text" class="form-control" placeholder=" Paragraph">
+            <span asp-validation-for="Paragraph"></span>
+        </div>
+
+
+      
+        <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+        <button class="btn btn-dark">Cancel</button>
+
+    </form>
+</div>
